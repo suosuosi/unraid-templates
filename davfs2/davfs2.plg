@@ -46,15 +46,6 @@ rm -f $(ls &pluginDIR;/*.txz 2>/dev/null|grep -v '&src_pkg;' -v '&dep1_pkg;' -v 
   <MD5>&dep2_md5;</MD5>
 </FILE>
 
-<!-- Setup davfs2 user/group -->
-<FILE Run="/bin/bash">
-<INLINE>
-echo "Adding davfs2 group...."
-groupadd -g 230 davfs2
-useradd -u 230 -d /var/cache/davfs2 -g davfs2 -s /bin/false davfs2
-</INLINE>
-</FILE>
-
 <!-- Install src - davfs2 -->
 <FILE Name="&pluginDIR;/&src_pkg;" Run="upgradepkg --install-new --reinstall">
 <URL>&gitURL;/packages/&src_pkg;</URL>
